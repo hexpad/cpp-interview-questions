@@ -1,24 +1,25 @@
 #include <iostream>
 #include <vector>
 
-void removeNegatives(std::vector<int>& v)
+void removeNegatives(std::vector<int>& v,std::vector<int>& res)
 {
-    for(auto it = v.begin(); it != v.end();)
+    for(int n : v)
     {
-        if(*it < 0)
-            it = v.erase(it);
-        else
-            ++it;
+        if (n >= 0)
+        {
+            res.push_back(n);
+        }
     }
 }
 
 int main()
 {
-    std::vector<int> vec{2,4,6,-2,8,-4,0,-1};
+    std::vector<int> vec{2,4,-3,6,7,-1,0,8,-9};
+    std::vector<int> result;
 
-    removeNegatives(vec);
+    removeNegatives(vec,result);
 
-    for(int n : vec)
+    for(int n : result)
     {
         std::cout << n << " ";
     }
