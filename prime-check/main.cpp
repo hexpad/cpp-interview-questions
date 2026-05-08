@@ -1,35 +1,42 @@
-/*
-  This program checks whether the given number is prime.
-  It tests divisibility from 2 up to the square root of the number.
-  If any divisor is found, the number is not prime.
-*/
-
 #include <iostream>
 
-void isPrime(int x)
+void isPrime(int num)
 {
-    if(x <= 1)
+    if(num <= 1)
     {
         std::cout << "Not prime\n";
         return;
     }
 
-    for(int i = 2; i * i <= x; i++)
+    bool prime = true;
+
+    for(int i=2; i < num; ++i)
     {
-        if(x % i == 0)
+        if(num % i == 0)
         {
-            std::cout << "Not prime\n";
-            return;
+            prime = false;
+            break;
         }
     }
-    std::cout << "Prime\n";
+
+    if(prime)
+    {
+        std::cout << "Prime\n";
+    }
+    else
+    {
+        std::cout << "Not prime\n";
+    }
 }
 
 int main()
 {
     int number{};
-    std::cout << "Enter a number : ";
+
+    std::cout << "Enter a number : \n";
     std::cin >> number;
 
     isPrime(number);
+
+    return 0;
 }
